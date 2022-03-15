@@ -57,7 +57,7 @@ jobs:
         run: poetry run pyinstaller {{ pyinstaller_package }} --name={{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %} --onefile
 
       - name: Rename executable for {% raw %}${{matrix.executable_os}}{% endraw %}
-        run: mv dist/{{ executable_name }}-{% raw %}${{ env.vers }}${{ matrix.executable_ext }}{% endraw %} dist/{{ executable_name }}-{% raw %}${{ env.vers}}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
+        run: mv dist/{{ executable_name }}-{% raw %}${{ env.vers }}${{ matrix.executable_ext }}{% endraw %} dist/{{ executable_name }}-{% raw %}${{ env.vers }}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
 
       - uses: actions/upload-artifact@v2
         with:
