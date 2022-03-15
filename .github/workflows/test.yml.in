@@ -6,8 +6,7 @@ concurrency:
 env:
   RELEASE_BRANCH: main
   PRE_RELEASE_BRANCH: develop
-  PYTHON_VERSION_PRE_COMMIT: 3.9
-  PYTEST_ARGS: --verbose --exitfirst
+  PYTHON_VERSION_PRE_COMMIT: 3.9  
   BOT_ACCOUNT_NAME: hpcflow-actions
   BOT_ACCOUNT_EMAIL: hpcflow-actions@users.noreply.github.com
 
@@ -95,4 +94,4 @@ jobs:
 
       - name: Run tests
         run: |
-          poetry run python -m pytest {% raw %}${{ env.PYTEST_ARGS }}{% endraw %}
+          poetry run python -m pytest {{ pytest_args }}
