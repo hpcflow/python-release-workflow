@@ -57,15 +57,15 @@ jobs:
         run: poetry run pyinstaller {{ pyinstaller_package }} --name={{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %} --onefile
 
       - name: Rename executable for {% raw %}${{matrix.executable_os}}{% endraw %}
-        run: mv dist/{{ executable_name }}-{% raw %}${{ env.vers}}${{ matrix.executable_ext }}{% endraw %} dist/{{ executable_name }}-{% raw %}${{ env.vers}}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
+        run: mv dist/{{ executable_name }}-{% raw %}${{ env.vers }}${{ matrix.executable_ext }}{% endraw %} dist/{{ executable_name }}-{% raw %}${{ env.vers}}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: {{ executable_name }}-{% raw %}${{ env.vers}}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
-          path: dist/{{ executable_name }}-{% raw %}${{ env.vers}}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
+          name: {{ executable_name }}-{% raw %}${{ env.vers }}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
+          path: dist/{{ executable_name }}-{% raw %}${{ env.vers }}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
 
       - name: Basic executable test
-        run: dist/{{ executable_name }}-{% raw %}${{ env.vers}}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %} --version
+        run: dist/{{ executable_name }}-{% raw %}${{ env.vers }}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %} --version
 
   build-executables-linux:
     runs-on: ubuntu-latest
@@ -103,7 +103,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: {{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-linux
-          path: {% raw %}dist/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-linux
+          path: dist/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-linux
 
       - name: Basic executable test
-        run: dist/{{ executable_name }}-{% raw %}${{ env.vers}}{% endraw %}-linux --version
+        run: dist/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-linux --version
