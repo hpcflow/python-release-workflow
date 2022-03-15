@@ -48,3 +48,8 @@ In the target repository:
 - Stage, commit, and push the changes as normal: `git add .github/; git commit -m "build: update GH Actions workflows"; git push`
 
 Note: once the remote is set up and you wish to synchronise again, we can fetch changes like this: `git fetch python-release-workflow main:python-release-workflow/main` (which takes the syntax: `git fetch <remote-name> <src-branch>:<dst-branch>`)
+
+
+## Generating the workflow files from the Jinja2 templates
+
+Run: `python generate_workflows.py /path/to/templates/directory /path/to/JSON/variables.json`
