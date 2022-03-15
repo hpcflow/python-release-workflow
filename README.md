@@ -46,3 +46,5 @@ In the target repository:
 - Checkout the branch you want to synchronise: `git checkout aplowman/develop`
 - Checkout only the `.github` directory from this repository: `git checkout python-release-workflow/main -- .github/`
 - Stage, commit, and push the changes as normal: `git add .github/; git commit -m "build: update GH Actions workflows"; git push`
+
+Note: once the remote is set up and you wish to synchronise again, we can fetch changes like this: `git fetch python-release-workflow main:python-release-workflow/main` (which takes the syntax: `git fetch <remote-name> <src-branch>:<dst-branch>`)
