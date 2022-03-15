@@ -4,8 +4,6 @@ concurrency:
   {% raw %}ci-${{ format('{0}github.head_ref', 'refs/heads') || github.ref }}{% endraw %}
 
 env:
-  RELEASE_BRANCH: main
-  PRE_RELEASE_BRANCH: develop
   PYTHON_VERSION_PRE_COMMIT: 3.9
 
 on:
