@@ -94,5 +94,5 @@ jobs:
           poetry install
 
       - name: Run tests
-        run: | # disable failing tests while we set up CI
-          poetry run python -m pytest $PYTEST_ARGS
+        run: |
+          poetry run python -m pytest ${{ env.PYTEST_ARGS }}
