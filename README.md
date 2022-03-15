@@ -34,3 +34,15 @@ all of which need to occur during the GitHub actions workflows.
 ## Skipping the release workflow
 
 We can prevent release workflow running on pull-request merge by adding `[skip release]` to the PR title.
+
+
+## How to merge this repository's workflow files with another repository
+
+In the target repository:
+
+- Add this repo as a remote: `git remote add python-release-workflow https://github.com/hpcflow/python-release-workflow.git`
+- Effectively set the remote as fetch-only to avoid accidentally pushing to it: `git remote set-url --push python-release-workflow no-pushing`
+- Checkout this repo as a new branch in your repo: `git checkout -b python-release-workflow/main python-release-workflow/main`
+- Checkout the branch you want to synchronise: `git checkout aplowman/develop`
+- Checkout only the `.github` directory from this repository: `git checkout python-release-workflow/main -- .github/`
+- Stage, commit, and push the changes as normal: `git add .github/; git commit -m "build: update GH Actions workflows"; git push`
