@@ -42,6 +42,7 @@ In the target repository:
 
 - Add this repo as a remote: `git remote add python-release-workflow https://github.com/hpcflow/python-release-workflow.git`
 - Effectively set the remote as fetch-only to avoid accidentally pushing to it: `git remote set-url --push python-release-workflow no-pushing`
+- Fetch all: `git fetch --all`
 - Checkout this repo as a new branch in your repo: `git checkout -b python-release-workflow/main python-release-workflow/main`
 - Checkout the branch you want to synchronise: `git checkout aplowman/develop`
 - Checkout only the `.github` directory from this repository: `git checkout python-release-workflow/main -- .github/`
