@@ -210,7 +210,7 @@ jobs:
       - name: Basic executable test (windows)
         if: contains(matrix.os, 'windows')
         run: |
-          $tag = "${{ needs.bump-version.outputs.new_tag_name }}"
+          $tag = "{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}"
           $tagNoV = $tag.trim('v')
           ${{ executable_name }}_vers = dist/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %} --version
           ${{ executable_name }}_vers_expected = "{{ executable_name }}, version $tagNoV"
@@ -223,7 +223,7 @@ jobs:
       - name: Basic executable test (non-windows)
         if: "!contains(matrix.os, 'windows')"
         run: |
-          tag=${{ needs.bump-version.outputs.new_tag_name }}
+          tag={% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}
           tagNoV=${tag:1}
           {{ executable_name }}_vers=$(dist/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %} --version)
           {{ executable_name }}_vers_expected="{{ executable_name }}, version $tagNoV"
