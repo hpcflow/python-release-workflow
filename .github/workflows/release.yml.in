@@ -204,9 +204,6 @@ jobs:
           name: {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}{% endraw %}-build
           path: build/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}{% endraw %}
 
-      - name: Basic executable test
-        run: dist/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %} --version
-
       - name: Basic executable test (windows)
         if: contains(matrix.os, 'windows')
         run: |
