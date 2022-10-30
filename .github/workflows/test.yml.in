@@ -4,7 +4,7 @@ concurrency:
   {% raw %}ci-${{ format('{0}github.head_ref', 'refs/heads') || github.ref }}{% endraw %}
 
 env:
-  PYTHON_VERSION_PRE_COMMIT: 3.9
+  PYTHON_VERSION_PRE_COMMIT: "3.10"
 
 on:
   workflow_dispatch: # manual invocation
@@ -58,8 +58,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.10"]
-        os: [ubuntu-18.04]
+        python-version:
+          - "3.7"
+          - "3.8"
+          - "3.9"
+          - "3.10"
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
 
     runs-on: {% raw %}${{ matrix.os }}{% endraw %}
     steps:
@@ -97,11 +104,12 @@ jobs:
       image: aplowman/centos7-poetry
     steps:
       - uses: actions/checkout@v2
-        with:          
+        with:
           ref: {% raw %}${{ github.ref }}{% endraw %}
 
       - name: Set ownership
         run: |
+          # see: https://github.com/actions/runner/issues/2033#issuecomment-1204205989
           # this is to fix GIT not liking owner of the checkout dir
           chown -R $(id -u):$(id -g) $PWD
 
