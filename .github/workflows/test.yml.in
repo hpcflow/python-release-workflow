@@ -26,7 +26,7 @@ jobs:
           token: {{ '${{' }} secrets.{{ token_name }} {{ '|| secrets.GITHUB_TOKEN }}' }}
           # checkout PR source branch (head_ref) if event is pull_request:
           ref: {% raw %}${{ github.head_ref || github.ref }}{% endraw %}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          repository: {% raw %}${{ github.event.pull_request.head.repo.full_name }}{% endraw %}
 
       - run: |
           git config user.name {{ bot_account_name }}
