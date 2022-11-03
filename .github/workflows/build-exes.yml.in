@@ -160,16 +160,6 @@ jobs:
           name: {{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-linux-build
           path: {{ pyinstaller_dir }}/build/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-linux
 
-      - name: Version check
-        run: |
-          tag={% raw %}${{ env.cur_tag }}{% endraw %}
-          tagNoV=${tag:1}
-          {{ executable_name }}_vers=$({{ pyinstaller_dir }}/dist/{{ executable_name }}-{% raw %}${{ env.vers }{% endraw %}}-linux --version)
-          {{ executable_name }}_vers_expected="{{ executable_name }}, version $tagNoV"
-          echo ${{ executable_name }}_vers
-          echo ${{ executable_name }}_vers_expected
-          [ "${{ executable_name }}_vers" = "${{ executable_name }}_vers_expected" ]
-
       - name: Run test suite on the frozen app
         run: |
           {{ pyinstaller_dir }}/dist/{{ executable_name }}-{% raw %}${{ env.vers }{% endraw %}}-linux test
