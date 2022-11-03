@@ -265,18 +265,6 @@ jobs:
           name: {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-linux
           path: {{ pyinstaller_dir }}/dist/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-linux
 
-      - name: Upload spec file
-        uses: actions/upload-artifact@v3
-        with:
-          name: {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-linux.spec
-          path: {{ pyinstaller_dir }}/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-linux.spec
-
-      - name: Upload build directory
-        uses: actions/upload-artifact@v3
-        with:
-          name: {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-linux-build
-          path: {{ pyinstaller_dir }}/build/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-linux
-
       - name: Version check
         run: |
           tag={% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}
