@@ -199,12 +199,6 @@ jobs:
           name: {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
           path: {{ pyinstaller_dir }}/dist/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}${{ matrix.executable_ext }}{% endraw %}
 
-      - name: Upload build directory
-        uses: actions/upload-artifact@v3
-        with:
-          name: {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}{% endraw %}-build
-          path: {{ pyinstaller_dir }}/build/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}{% endraw %}
-
       - name: Version check (windows)
         if: contains(matrix.os, 'windows')
         run: |
