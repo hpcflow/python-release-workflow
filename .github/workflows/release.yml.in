@@ -400,6 +400,9 @@ jobs:
             **/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-win.exe
             **/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-macOS
             **/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-linux
+            **/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-win-dir.zip
+            **/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-macOS-dir.zip
+            **/{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-linux-dir.zip
           prerelease: {{ '${{' }} github.event.pull_request.base.ref == '{{ pre_release_branch }}' {{ '}}' }}
 
       - name: Release info
@@ -408,7 +411,7 @@ jobs:
           binaryYaml=$(python3 -c "
           from pathlib import Path
           out_yaml = ''
-          for i in ['win.exe', 'macOS', 'linux']:
+          for i in ['win.exe', 'macOS', 'linux', 'win-dir.zip', 'macOS-dir.zip', 'linux-dir.zip']:
             exe_name = '{{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}-' + i
             url = 'https://github.com/{{ org }}/{{ repo }}/releases/download/{% raw %}${{ needs.bump-version.outputs.new_tag_name }}{% endraw %}/' + exe_name
             out_yaml += exe_name + ': ' + url + '\n'
