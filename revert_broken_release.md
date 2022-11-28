@@ -16,6 +16,11 @@ Some instructions for reverting a failed release.
 
 6. Delete tag associated with botched release remotely: `git push --delete origin tagname`
 
-7. Revert PR for failed release through GitHub. Make sure to add [skip release]' to PR title to avoid release!
+7. Make commits to feature branch to fix problem.
 
+8. Create new pull request to make changes.
+
+## Current problems
+
+If released to PyPI, can't have release with the same version number.
 
