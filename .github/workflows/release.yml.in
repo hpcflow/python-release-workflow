@@ -267,7 +267,7 @@ jobs:
       - name: Compress folder (non-windows, folder)
         if: "!contains(matrix.os, 'windows')" 
         working-directory: {{ pyinstaller_dir }}
-        run: ./compress.sh {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}-dir 'onefile'{% endraw %}
+        run: ./compress.sh {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }}-dir 'onedir'{% endraw %}
           
       - name: Upload executable artifact (file)
         uses: actions/upload-artifact@v3
@@ -347,7 +347,7 @@ jobs:
 
       - name: Compress folder (folder)
         working-directory: {{ pyinstaller_dir }}
-        run: ./compress.sh {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-linux-dir 'onefile'{% endraw %}
+        run: ./compress.sh {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-linux-dir 'onedir'{% endraw %}
 
       - name: Upload executable artifact (file)
         uses: actions/upload-artifact@v3
