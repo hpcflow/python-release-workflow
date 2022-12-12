@@ -1,6 +1,8 @@
 # Reverting failed release.
 
-Some instructions for reverting a failed release.
+Some instructions for reverting a failed release. Only revert if failure occurs before releasing on PyPI. If failure
+occurs after PyPI release, merge fixes but don't revert version bump commits.
+
 
 ## On develop branch
 
