@@ -175,10 +175,12 @@ jobs:
           key: {% raw %}venv-build-${{ matrix.os }}-${{ hashFiles('**/poetry.lock') }}{% endraw %}
 
       - name: Install poetry
-        run: python -m pip install poetry==1.2.2
+        run: python -m pip install poetry==1.4
 
       - name: Configure poetry
-        run: poetry config virtualenvs.in-project true
+        run: |
+          poetry config virtualenvs.in-project true
+          poetry config installer.modern-installation false
 
       - name: Install dependencies
         run: poetry install --without dev
@@ -298,7 +300,8 @@ jobs:
           chown -R $(id -u):$(id -g) $PWD
 
       - name: Configure poetry
-        run: poetry config virtualenvs.in-project true
+        run: |
+          poetry config virtualenvs.in-project true
 
       - name: Cache the virtualenv
         uses: actions/cache@v3
@@ -382,10 +385,12 @@ jobs:
           key: {% raw %}venv-release-${{ hashFiles('**/poetry.lock') }}{% endraw %}
 
       - name: Install poetry
-        run: python -m pip install poetry==1.2.2
+        run: python -m pip install poetry==1.4
 
       - name: Configure poetry
-        run: poetry config virtualenvs.in-project true
+        run: |
+          poetry config virtualenvs.in-project true
+          poetry config installer.modern-installation false
 
       - name: Install dependencies
         run: poetry install --without dev,pyinstaller
@@ -490,10 +495,11 @@ jobs:
           key: {% raw %}venv-release-${{ matrix.os }}-${{ hashFiles('**/poetry.lock') }}{% endraw %}
 
       - name: Install poetry
-        run: curl -sSL https://install.python-poetry.org | python3 -
+        run: python -m pip install poetry==1.4
 
       - name: Configure poetry
         run: poetry config virtualenvs.in-project true
+             poetry config installer.modern-installation false
 
       - name: Install dependencies
         run: poetry install --without test,pyinstaller
