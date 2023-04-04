@@ -10,5 +10,5 @@ jobs:
     steps: 
       - uses: actions/add-to-project@v0.4.0 
         with: 
-          github-token: ${{ secrets.HPCFLOW_ACTIONS_TOKEN }}
+          github-token: ${{ secrets.HPCFLOW_PROJECT_ACTIONS_TOKEN }}
           project-url: https://github.com/orgs/hpcflow/projects/7
