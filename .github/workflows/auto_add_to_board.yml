@@ -11,4 +11,4 @@ jobs:
       - uses: actions/add-to-project@v0.4.0 
         with: 
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          project-url: https://github.com/orgs/hpcflow/projects/7/views/8
+          project-url: https://github.com/orgs/hpcflow/projects/7
