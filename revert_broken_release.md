@@ -22,6 +22,8 @@ occurs after PyPI release, merge fixes but don't revert version bump commits.
 
 8. Create new pull request to make changes.
 
+9. Turn back on branch protection on develop.
+
 ## Current problems
 
 If released to PyPI, can't have release with the same version number.
