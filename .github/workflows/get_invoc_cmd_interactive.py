@@ -8,8 +8,8 @@ works on POSIX operating systems.
 import sys
 import pexpect
 
-executable = sys.argv[1] # e.g. `python` or `ipython`
-app_import = sys.argv[2] # e.g. `hpcflow.app` or `matflow`
+executable = sys.argv[1]  # e.g. `python` or `ipython`
+app_import = sys.argv[2]  # e.g. `hpcflow.app` or `matflow`
 prompt = {
     "python": ">>>",
     "ipython": "In.*",
