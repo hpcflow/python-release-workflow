@@ -40,10 +40,7 @@ We can prevent release workflow running on pull-request merge by adding `[skip r
 
 In the [matflow](https://github.com/hpcflow/matflow-new) and [hpcflow](https://github.com/hpcflow/hpcflow-new) repositories the script `remotes.py` configures the remotes, synchronizes the contents, and generates the workflows from the jinja2 templates.
 
-To use the script, from the base directory of the repo run:
-```
-.github/remotes.py
-```
+All you need to do is run the python script `.github/remotes.py`, and commit the staged changes.
 
 Alternatively, you may want to perform each step manually, as indicated below.
 
