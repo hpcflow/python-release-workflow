@@ -367,6 +367,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       binary_download_links: {% raw %}${{ steps.get_binary_download_links.outputs.binary_download_links }}{% endraw %}
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
         with:
