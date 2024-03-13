@@ -408,7 +408,7 @@ jobs:
         run: |
           poetry run {{ executable_name }} --timeit-file benchmark_make_workflow_{% raw %}${{ matrix.num_elements }}{% endraw %}_elements-{% raw %}${{ runner.os }}-py-${{ matrix.python-version }}.txt{% endraw %} make {{ benchmark_make_workflow }} --var N {% raw %}${{ matrix.num_elements }}{% endraw %}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
             name: {% raw %}benchmark_make_workflow_${{ matrix.num_elements }}_elements-${{ runner.os }}-py-${{ matrix.python-version }}.txt{% endraw %}
             path: {% raw %}benchmark_make_workflow_${{ matrix.num_elements }}_elements-${{ runner.os }}-py-${{ matrix.python-version }}.txt{% endraw %}
