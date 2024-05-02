@@ -135,14 +135,14 @@ jobs:
       - name: Run test suite on the frozen app (file)
         if:  github.event.inputs.build_onefile == 'true'
         env:
-          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% raw %}
+          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
         run: |
           {{ pyinstaller_dir }}/dist/onefile/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-win.exe test {% raw %}${{ github.event.inputs.unit_test_args }}{% endraw %}
 
       - name: Run test suite on the frozen app (folder)
         if:  github.event.inputs.build_onedir == 'true'
         env:
-          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% raw %}        
+          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}        
         run: |
           {{ pyinstaller_dir }}/dist/onedir/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-win-dir/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-win-dir.exe test {% raw %}${{ github.event.inputs.unit_test_args }}{% endraw %}
 
@@ -239,14 +239,14 @@ jobs:
       - name: Run test suite on the frozen app (file)
         if:  github.event.inputs.build_onefile == 'true'
         env:
-          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% raw %}        
+          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}        
         run: |
           {{ pyinstaller_dir }}/dist/onefile/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-macOS test {% raw %}${{ github.event.inputs.unit_test_args }}{% endraw %}
 
       - name: Run test suite on the frozen app (folder)
         if:  github.event.inputs.build_onedir == 'true'
         env:
-          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% raw %}        
+          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}        
         run: |
           {{ pyinstaller_dir }}/dist/onedir/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-macOS-dir/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-macOS-dir test {% raw %}${{ github.event.inputs.unit_test_args }}{% endraw %}
 
@@ -344,13 +344,13 @@ jobs:
       - name: Run test suite on the frozen app (file)
         if: github.event.inputs.build_onefile == 'true'
         env:
-          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% raw %}        
+          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}        
         run: |
           {{ pyinstaller_dir }}/dist/onefile/{{ executable_name }}-{% raw %}${{ env.vers }}{% endraw %}-linux test {% raw %}${{ github.event.inputs.unit_test_args }}{% endraw %}
 
       - name: Run test suite on the frozen app (folder)
         if: github.event.inputs.build_onedir == 'true'
         env:
-          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% raw %}        
+          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}        
         run: |
           {{ pyinstaller_dir }}/dist/onedir/{{ executable_name }}-{% raw %}${{ env.vers }}-linux-dir/{% endraw %}{{ executable_name }}-{% raw %}${{ env.vers }}-linux-dir{% endraw %} test {% raw %}${{ github.event.inputs.unit_test_args }}{% endraw %}
