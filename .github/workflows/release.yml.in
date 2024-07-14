@@ -190,7 +190,7 @@ jobs:
         if: "!contains(matrix.os, 'windows')"
         working-directory: {{ pyinstaller_dir }}
         run: ./make.sh {{ executable_name }}-{% raw %}${{ needs.bump-version.outputs.new_tag_name }}-${{ matrix.executable_os }} INFO 'onefile'{% endraw %}
-        
+
       - name: Build with pyinstaller (non-Windows, folder)
         if: "!contains(matrix.os, 'windows')"
         working-directory: {{ pyinstaller_dir }}
