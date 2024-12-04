@@ -290,6 +290,11 @@ jobs:
         with:
           ref: {% raw %}${{ github.event.pull_request.base.ref }}{% endraw %} # otherwise we get the ref when the workflow started (missing above commit)
 
+      - name: Cache the virtualenv
+        uses: actions/cache@v4
+        with:
+          path: ./.venv
+          key: venv-build-CentOS-{% raw %}${{ hashFiles('**/poetry.lock') }}{% endraw %}
 
       - name: Build executables within Docker
         uses: addnab/docker-run-action@v3
