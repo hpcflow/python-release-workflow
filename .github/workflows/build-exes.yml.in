@@ -306,7 +306,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ghcr.io/hpcflow/centos7-poetry:latest
-          options: -v ${{ github.workspace }}:/home --env GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          options: -v {% raw %}${{ github.workspace }}:/home --env GH_TOKEN=${{ secrets.GITHUB_TOKEN }}{% endraw %}
           run: |
             
             # set up poetry
