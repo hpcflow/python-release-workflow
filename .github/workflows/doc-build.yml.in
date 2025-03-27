@@ -8,9 +8,8 @@ jobs:
   sphinx:
     # Note that we only do this on one platform and with one Python version
     runs-on: ubuntu-latest
-{% raw %}
     steps:
-      - name: Checkout
+      {% raw %}- name: Checkout
         uses: actions/checkout@v4
       - name: Init Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
@@ -24,8 +23,7 @@ jobs:
         uses: hpcflow/github-support/init-cache@0.1
         with:
           name: sphinx
-          version: ${{ env.PYTHON_VERSION }}
-{% endraw %}
+          version: ${{ env.PYTHON_VERSION }}{% endraw %}
       - name: Install Dependencies
         run: |
           poetry install --without pyinstaller
