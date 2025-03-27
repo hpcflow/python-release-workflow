@@ -41,10 +41,10 @@ jobs:
   test:
     uses: hpcflow/github-support/.github/workflows/test-impl.yml@main
     with:
-      {% raw %}pre_commit: ${{ github.event_name == 'pull_request' || github.event.inputs.pre_commit }}
-      unit_tests: ${{ github.event_name == 'pull_request' || github.event.inputs.unit_tests }}
-      integration_tests: ${{ github.event_name == 'pull_request' || github.event.inputs.integration_tests }}
-      invocation_tests: ${{ github.event_name == 'pull_request' || github.event.inputs.invocation_tests }}
+      {% raw %}pre_commit: ${{ github.event_name == 'pull_request' || github.event.inputs.pre_commit == 'true' }}
+      unit_tests: ${{ github.event_name == 'pull_request' || github.event.inputs.unit_tests == 'true' }}
+      integration_tests: ${{ github.event_name == 'pull_request' || github.event.inputs.integration_tests == 'true' }}
+      invocation_tests: ${{ github.event_name == 'pull_request' || github.event.inputs.invocation_tests == 'true' }}
       unit_test_args: ${{ github.event.inputs.unit_test_args }}
       integration_test_args: ${{ github.event.inputs.integration_test_args }}
       ref: ${{ github.ref }}
