@@ -55,7 +55,7 @@ jobs:
       CLI_path: {{ CLI_path }}
       CLI_path_win: {{ CLI_path_win }}
       executable_name: {{ executable_name }}
-      pytest_args: {{ pytest_args }}
+      pytest_args:{%- if pytest_args %} {{ pytest_args }}{%- else %} ""{%- endif %}
     secrets:
       pre-commit-token: {{ '${{' }} secrets.{{ token_name }} {{ '|| secrets.GITHUB_TOKEN }}' }}
     permissions:
